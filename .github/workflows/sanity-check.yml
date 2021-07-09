@@ -1,0 +1,28 @@
+name: Sanity check
+on:
+  - pull_request
+  - push
+
+env:
+  NPM_TOKEN_GITHUB: ${{ secrets.NODE_AUTH_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+jobs:
+  build:
+    name: Verify that the website can be built
+    strategy:
+      matrix:
+        node: [14, 16]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check code out from the repository
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: ${{ matrix.node }}
+      - name: Install dependencies using NPM
+        run: npm ci
+      - name: Build the website
+        run: npm run build
