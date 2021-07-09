@@ -42,9 +42,9 @@ function Navigation() {
       <ul>
         {NAV_LINKS.map(([name, href]) => (
           <li key={href}>
-            <a aria-current={router?.pathname === href ? 'page' : undefined} href={href}>
-              {name}
-            </a>
+            <Link href={href}>
+              <a aria-current={router?.pathname === href ? 'page' : undefined}>{name}</a>
+            </Link>
           </li>
         ))}
       </ul>

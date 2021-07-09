@@ -49,7 +49,24 @@ function Biography() {
   return (
     <article className={styles.biography}>
       <h3>About Me, in Fifteen Seconds</h3>
-      <Image alt="" height="200" src={photo} width="200" />
+      <picture>
+        <source
+          sizes="200px"
+          srcSet="/assets/photo@200.avif 200w, /assets/photo@400.avif 400w, /assets/photo@600.avif 600w"
+          type="image/avif"
+        />
+        <source
+          sizes="200px"
+          srcSet="/assets/photo@200.webp 200w, /assets/photo@400.webp 400w, /assets/photo@600.webp 600w"
+          type="image/webp"
+        />
+        <source
+          sizes="200px"
+          srcSet="/assets/photo@200.jpg 200w, /assets/photo@400.jpg 400w, /assets/photo@600.jpg 600w"
+          type="image/jpeg"
+        />
+        <img alt="Jeremy Boles" decoding="async" height="200" loading="lazy" src="/assets/photo@200.jpg" width="200" />
+      </picture>
       <p>
         Hi! I’m Jeremy Boles, an American programmer and designer based out of Southwest Missouri, in the United States.
         I currently work for Area 1 Security as a Senior UI Engineer, but I also run a small software studio called
