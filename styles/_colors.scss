@@ -1,0 +1,24 @@
+@use '@centralstandard/colors';
+
+:root {
+  @include colors.properties;
+}
+
+body {
+  background-color: var(--warm-gray-50);
+  color: var(--warm-gray-700);
+}
+
+// a {
+//   &:link {
+//     color: var(--blue-600);
+//   }
+
+//   &:visited {
+//     color: var(--purple-700);
+//   }
+
+//   &:active {
+//     color: var(--red-600);
+//   }
+// }

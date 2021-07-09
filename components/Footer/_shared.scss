@@ -1,0 +1,8 @@
+%centered {
+  margin: 0 auto;
+  max-width: var(--size-11);
+  padding-bottom: 0;
+  padding-left: calc(var(--space-5) + env(safe-area-inset-left, 0));
+  padding-right: calc(var(--space-5) + env(safe-area-inset-right, 0));
+  padding-top: 0;
+}

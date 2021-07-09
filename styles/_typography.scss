@@ -1,0 +1,27 @@
+@use '@centralstandard/addington';
+@use '@centralstandard/argent';
+@use '@centralstandard/ellograph';
+@use '@centralstandard/greycliff';
+
+@use '@centralstandard/typography';
+
+:root {
+  @include typography.properties;
+
+  --addington: 'Addington', ui-serif, serif;
+  --argent: 'Argent', ui-serif, serif;
+  --ellograph: 'Ellograph', ui-monospace, monospace;
+  --greycliff: 'Greycliff', ui-sans-serif, sans-serif;
+
+  --monospace: var(--ellograph);
+  --sans-serif: var(--greycliff);
+  --serif: var(--addington);
+
+  font-family: var(--serif);
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  font-size: clamp(100%, 50% + 0.666vw, 150%);
+  font-weight: 200;
+  line-height: var(--leading-0);
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+}

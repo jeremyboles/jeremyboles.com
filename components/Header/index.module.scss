@@ -1,0 +1,128 @@
+@use '@centralstandard/typography';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  --v-padding: var(--space-6);
+
+  @media (min-width: 640px) {
+    --v-padding: var(--space-9);
+  }
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: var(--v-padding);
+  padding-left: calc(var(--space-5) + env(safe-area-inset-left, 0));
+  padding-right: calc(var(--space-5) + env(safe-area-inset-right, 0));
+  padding-top: calc(var(--v-padding) + env(safe-area-inset-top, 0));
+
+  &::after {
+    --size: var(--size-5);
+
+    background-color: var(--warm-gray-100);
+    content: ' ';
+    display: block;
+    height: var(--size);
+    left: 50%;
+    mask-image: url('./knot.svg');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--size);
+    z-index: -1;
+
+    @media (min-width: 640px) {
+      --size: var(--size-6);
+    }
+  }
+}
+
+//
+// Wordmark
+// -------------------------------------------------------------------------------------------------
+
+.wordmark {
+  @include typography.text-size(xl);
+
+  @media (min-width: 352px) {
+    @include typography.text-size(2-xl);
+  }
+
+  color: inherit;
+  font-family: var(--argent);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-3);
+  letter-spacing: var(--kerning-tight);
+  text-align: center;
+  text-transform: lowercase;
+
+  a {
+    color: var(--warm-gray-800);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--warm-gray-600);
+  }
+}
+
+//
+// Tag line
+// -------------------------------------------------------------------------------------------------
+
+.tagline {
+  @include typography.text-size(2-xs);
+
+  @media (min-width: 352px) {
+    @include typography.text-size(xs);
+  }
+
+  color: var(--warm-gray-600);
+  font-family: var(--sans-serif);
+  font-weight: 500;
+  text-align: center;
+}
+
+//
+// Primary navigation
+// -------------------------------------------------------------------------------------------------
+
+.navigation {
+  order: -1;
+
+  a {
+    color: var(--warm-gray-500);
+    text-decoration: none;
+
+    &:hover {
+      color: vaR(--warm-gray-700);
+    }
+  }
+
+  li {
+    @include typography.text-size(2-xs);
+
+    font-family: var(--sans-serif);
+    font-weight: 700;
+    letter-spacing: var(--kerning-widest);
+    text-transform: uppercase;
+  }
+
+  li + li {
+    margin-left: var(--space-3);
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+}

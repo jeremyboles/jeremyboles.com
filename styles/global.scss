@@ -1,0 +1,39 @@
+@use './colors';
+@use './sizing';
+@use './typography';
+
+//
+// Base styles
+// -------------------------------------------------------------------------------------------------
+
+* {
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+body {
+  align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html {
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  padding-bottom: var(--space-7);
+  padding-top: var(--space-7);
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

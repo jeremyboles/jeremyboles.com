@@ -1,0 +1,197 @@
+@use '@centralstandard/typography';
+
+@use 'shared';
+
+//
+// Settings
+// -------------------------------------------------------------------------------------------------
+
+$break-point: 944px;
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  background-color: var(--warm-gray-300);
+  padding-bottom: var(--space-8);
+  padding-top: var(--space-8);
+
+  & > div {
+    @extend %centered;
+
+    display: grid;
+    grid-gap: var(--space-5);
+    grid-template-areas: 'biography' 'navigation';
+    grid-template-columns: initial;
+    grid-template-rows: auto auto;
+
+    @media (min-width: $break-point) {
+      grid-template-areas: 'navigation biography';
+      grid-template-columns: 1fr auto;
+      grid-template-rows: initial;
+    }
+  }
+}
+
+//
+// Biography
+// -------------------------------------------------------------------------------------------------
+
+.biography {
+  display: grid;
+  grid-area: biography;
+  grid-column-gap: var(--space-5);
+  grid-row-gap: var(--space-3);
+  grid-template-areas: 'title' 'photo' 'text';
+  grid-template-columns: initial;
+  max-width: var(--size-8);
+
+  @media (min-width: $break-point) {
+    grid-template-areas: 'title title' 'photo text';
+    grid-template-columns: auto 1fr;
+  }
+
+  h3 {
+    @include typography.text-size(base);
+
+    color: var(--warm-gray-700);
+    font-family: var(--sans-serif);
+    grid-area: title;
+  }
+
+  img {
+    border-radius: 0.25em;
+    grid-area: photo;
+  }
+
+  p {
+    @include typography.text-size(sm);
+
+    grid-area: text;
+  }
+}
+
+//
+// Gender list
+// -------------------------------------------------------------------------------------------------
+
+.genders {
+  @include typography.text-size(2-xs);
+
+  color: var(--warm-gray-500);
+  font-family: var(--sans-serif);
+  font-weight: 800;
+  letter-spacing: var(--kerning-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  a {
+    color: var(--orange-500);
+    text-decoration-color: transparent;
+  }
+
+  a:hover {
+    color: vaR(--orange-700);
+    text-decoration-color: var(--orange-400);
+  }
+}
+
+//
+// Navigation
+// -------------------------------------------------------------------------------------------------
+
+.navigation {
+  @include typography.text-size(xs);
+
+  font-family: var(--sans-serif);
+  font-weight: 500;
+  grid-area: navigation;
+
+  a {
+    color: var(--warm-gray-600);
+    text-decoration-color: transparent;
+
+    &:hover {
+      color: var(--warm-gray-900);
+      text-decoration-color: var(--warm-gray-400);
+    }
+
+    &[href^='http']::before {
+      background-color: var(--warm-gray-400);
+      content: '';
+      display: inline-block;
+      height: 2.5ch;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      margin-right: var(--space-2);
+      transform: translateY(-1px);
+      vertical-align: middle;
+      width: 2.5ch;
+    }
+
+    &[href*='boles.social']::before {
+      mask-image: url('./mastodon.svg');
+    }
+    &[href*='facebook.com']::before {
+      mask-image: url('./facebook.svg');
+    }
+    &[href*='github.com']::before {
+      mask-image: url('./github.svg');
+    }
+    &[href*='instagram.com']::before {
+      mask-image: url('./instagram.svg');
+    }
+    &[href*='twitter.com']::before {
+      mask-image: url('./twitter.svg');
+    }
+  }
+
+  dd {
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+
+  dl {
+    display: grid;
+    grid-column-gap: var(--space-5);
+    grid-row-gap: var(--space-5);
+    grid-template-columns: initial;
+
+    @media (min-width: $break-point) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  dt {
+    color: var(--warm-gray-700);
+    font-size: var(--text-2-xs);
+    font-weight: 700;
+    letter-spacing: var(--kerning-widest);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+  }
+}
+
+// .nav svg {
+//   color: var(--warm-gray-400);
+//   display: inline-block;
+//   height: auto;
+//   padding-right: var(--space-2);
+//   transform: translateY(-1px);
+//   vertical-align: middle;
+//   width: 2.5ch;
+// }
+
+.nav a:link:hover svg {
+  color: var(--blue-800);
+}
+
+.nav a:visited:hover svg {
+  color: var(--purple-800);
+}
+
+.nav a:active:hover svg {
+  color: var(--red-700);
+}

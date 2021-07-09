@@ -1,0 +1,7 @@
+@use '@centralstandard/sizes';
+@use '@centralstandard/spacing';
+
+:root {
+  @include sizes.properties;
+  @include spacing.properties;
+}
