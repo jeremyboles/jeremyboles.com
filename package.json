@@ -17,12 +17,15 @@
     "@centralstandard/typography": "^1.3.0",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "rehype-react": "^6.2.1",
+    "unified": "^9.2.1"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0",
+    "@jeremyboles/wiki": "^1.1.2",
     "@tsconfig/next": "1.0.0",
     "@types/react": "17.0.14",
+    "querystring": "^0.2.1",
     "sass": "^1.35.2",
     "typescript": "4.3.5"
   }
