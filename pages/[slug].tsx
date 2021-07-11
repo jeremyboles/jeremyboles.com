@@ -27,7 +27,7 @@ export default function TopicPage({ topic }: TopicPageProps) {
   return (
     <>
       <Head>
-        <title>Wiki | Jeremy Boles</title>
+        <title>{topic.file.data.title} — Wiki | Jeremy Boles</title>
       </Head>
 
       <article>
