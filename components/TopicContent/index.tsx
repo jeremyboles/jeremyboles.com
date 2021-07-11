@@ -3,6 +3,8 @@ import { createElement, ReactNode } from 'react'
 import stringify from 'rehype-react'
 import unified from 'unified'
 
+import styles from './index.module.scss'
+
 //
 // Main component
 // -------------------------------------------------------------------------------------------------
@@ -12,5 +14,5 @@ interface TopicContentProps {
 }
 
 export default function TopicContent({ topic }: TopicContentProps) {
-  return unified().use(stringify, { createElement }).stringify(topic.hast) as unknown as JSX.Element
+  return <div className={styles.container}>{unified().use(stringify, { createElement }).stringify(topic.hast)}</div>
 }

@@ -1,0 +1,37 @@
+@use '@centralstandard/typography';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  grid-area: map;
+}
+
+//
+// Last updated info
+// -------------------------------------------------------------------------------------------------
+
+.info {
+  color: var(--warm-gray-600);
+  font-family: var(--monospace);
+  font-size: var(--text-2-xs);
+  font-size: italic;
+  font-weight: 600;
+  line-height: var(--leading-0);
+  margin-top: var(--space-2);
+}
+
+//
+// Map graphic
+// -------------------------------------------------------------------------------------------------
+
+.map {
+  background-color: var(--blue-100);
+  border-color: var(--warm-gray-300);
+  border-style: solid;
+  border-width: var(--space-px);
+  border-radius: 0.5em;
+  height: var(--size-6);
+  width: 100%;
+}

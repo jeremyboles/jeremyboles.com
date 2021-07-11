@@ -1,0 +1,24 @@
+@use '@centralstandard/typography';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  @include typography.text-size(sm);
+
+  color: var(--warm-gray-600);
+  font-family: var(--sans-serif);
+  font-weight: 400;
+  grid-area: content;
+  padding-top: var(--space-4);
+
+  h2 {
+    @include typography.text-size(md);
+    color: var(--warm-gray-800);
+    font-family: var(--serif);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+    margin-top: var(--space-4);
+  }
+}

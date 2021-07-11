@@ -4,4 +4,6 @@
 :root {
   @include sizes.properties;
   @include spacing.properties;
+
+  --gutter: var(--space-5);
 }
