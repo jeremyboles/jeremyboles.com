@@ -16,6 +16,9 @@ export default class Document extends NextDocument {
           <meta name="description" content="The personal website of Jeremy Boles" />
           <meta name="theme-color" content={colors.warmGray[700]} />
           <link rel="manifest" href="/manifest.json" />
+
+          <meta name="author" content="Jeremy Boles" />
+          <link rel="me" href="mailto:me@jeremyboles.com" />
         </Head>
         <body>
           <Main />
