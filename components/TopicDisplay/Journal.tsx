@@ -19,7 +19,7 @@ export default function Journal({ topic }: JournalProps) {
         <h3>Journal Entries Related to “Colophon”</h3>
 
         <article className={styles.entry}>
-          <h4 className={styles.title}>
+          <h4 className={styles.icon}>
             <a href="#">A Note Posted on December 2nd, 2014</a>
           </h4>
 

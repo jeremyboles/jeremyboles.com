@@ -56,13 +56,19 @@ export default function Navigation({ topic }: NavigationProps) {
           <div className={styles.tags}>
             <dt className={styles.label}>Tagged with</dt>
             <dd>
-              <a href="#">tag</a>
+              <a href="#" rel="tag">
+                tag
+              </a>
             </dd>
             <dd>
-              <a href="#">tag2</a>
+              <a href="#" rel="tag">
+                tag2
+              </a>
             </dd>
             <dd>
-              <a href="#">tag3</a>
+              <a href="#" rel="tag">
+                tag3
+              </a>
             </dd>
           </div>
         </dl>

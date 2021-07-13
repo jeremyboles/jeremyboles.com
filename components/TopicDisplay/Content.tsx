@@ -1,4 +1,5 @@
 import { TransformedTopic } from '@jeremyboles/wiki'
+import Link from 'next/link'
 import React, { createElement } from 'react'
 import stringify from 'rehype-react'
 import unified from 'unified'
@@ -20,9 +21,11 @@ export default function Content({ topic }: ContentProps) {
 
       <header>
         <h1 className={styles.title}>
-          <a href="#">
-            <span>Topic:</span> {topic.file.data.title}
-          </a>
+          <Link href={`/${topic.file.data.slug}`}>
+            <a rel="bookmark">
+              <span>Topic:</span> {topic.file.data.title}
+            </a>
+          </Link>
         </h1>
       </header>
 

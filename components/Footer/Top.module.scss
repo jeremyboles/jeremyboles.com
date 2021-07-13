@@ -132,19 +132,19 @@ $break-point: 944px;
     }
 
     &[href*='boles.social']::before {
-      mask-image: url('./mastodon.svg');
+      mask-image: url('./icons/mastodon.svg');
     }
     &[href*='facebook.com']::before {
-      mask-image: url('./facebook.svg');
+      mask-image: url('./icons/facebook.svg');
     }
     &[href*='github.com']::before {
-      mask-image: url('./github.svg');
+      mask-image: url('./icons/github.svg');
     }
     &[href*='instagram.com']::before {
-      mask-image: url('./instagram.svg');
+      mask-image: url('./icons/instagram.svg');
     }
     &[href*='twitter.com']::before {
-      mask-image: url('./twitter.svg');
+      mask-image: url('./icons/twitter.svg');
     }
   }
 

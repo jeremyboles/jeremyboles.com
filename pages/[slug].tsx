@@ -23,6 +23,7 @@ export default function TopicPage({ topic }: TopicPageProps) {
     <>
       <Head>
         <title>{topic.file.data.title} — Wiki | Jeremy Boles</title>
+        <link rel="canonical" href={`/${topic.file.data.slug}`} />
       </Head>
 
       <TopicDisplay topic={topic} />
