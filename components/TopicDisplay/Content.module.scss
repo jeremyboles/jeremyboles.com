@@ -1,5 +1,7 @@
 @use '@centralstandard/typography';
 
+@use '../../styles/utils';
+
 //
 // Main wrapper
 // -------------------------------------------------------------------------------------------------
@@ -67,18 +69,18 @@
     color: var(--warm-gray-600);
     font-family: var(--monospace);
     font-size: var(--text-2-xs);
-    font-size: italic;
+    font-style: italic;
     font-weight: 600;
-    line-height: var(--leading-0);
+    line-height: 1.5;
     margin-top: var(--space-2);
   }
 
   svg {
     background-color: var(--blue-100);
-    border-color: var(--warm-gray-300);
+    border-color: var(--warm-gray-200);
     border-style: solid;
     border-width: var(--space-px);
-    border-radius: 0.5em;
+    border-radius: 0.25em;
     height: var(--size-6);
     width: 100%;
   }
@@ -109,5 +111,9 @@
   }
   a:hover {
     color: var(--yellow-900);
+  }
+
+  span {
+    @extend %visually-hidden;
   }
 }

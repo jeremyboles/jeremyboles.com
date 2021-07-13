@@ -45,7 +45,7 @@ $break-point: 944px;
   grid-row-gap: var(--space-3);
   grid-template-areas: 'title' 'photo' 'text';
   grid-template-columns: initial;
-  max-width: var(--size-8);
+  max-width: var(--size-24);
 
   @media (min-width: $break-point) {
     grid-template-areas: 'title title' 'photo text';

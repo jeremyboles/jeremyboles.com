@@ -24,7 +24,7 @@
   padding-top: calc(var(--v-padding) + env(safe-area-inset-top, 0));
 
   &::after {
-    --size: var(--size-5);
+    --size: var(--size-6);
 
     background-color: var(--warm-gray-100);
     content: ' ';
@@ -42,7 +42,7 @@
     z-index: -1;
 
     @media (min-width: 640px) {
-      --size: var(--size-6);
+      --size: var(--size-7);
     }
   }
 }

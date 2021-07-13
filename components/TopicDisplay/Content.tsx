@@ -20,7 +20,9 @@ export default function Content({ topic }: ContentProps) {
 
       <header>
         <h1 className={styles.title}>
-          <a href="#">{topic.file.data.title}</a>
+          <a href="#">
+            <span>Topic:</span> {topic.file.data.title}
+          </a>
         </h1>
       </header>
 

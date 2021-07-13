@@ -21,7 +21,7 @@
     'map      breadcrumbs breadcrumbs'
     'map      content     journal'
     'writing  writing     writing';
-  grid-template-columns: var(--size-7) 1fr auto;
+  grid-template-columns: var(--size-12) 1fr var(--size-14);
 }
 
 //

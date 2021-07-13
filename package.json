@@ -12,7 +12,7 @@
     "@centralstandard/colors": "^1.5.3",
     "@centralstandard/ellograph": "^1.1.5",
     "@centralstandard/greycliff": "^1.1.2",
-    "@centralstandard/sizes": "^1.0.0",
+    "@centralstandard/sizes": "^1.1.1",
     "@centralstandard/spacing": "^1.0.0",
     "@centralstandard/typography": "^1.3.0",
     "@jeremyboles/wiki": "^1.1.3",
