@@ -1,4 +1,5 @@
 import { TransformedTopic } from '@jeremyboles/wiki'
+import Link from 'next/link'
 import React from 'react'
 
 import styles from './Navigation.module.scss'
@@ -19,15 +20,19 @@ export default function Navigation({ topic }: NavigationProps) {
 
         <ol className={styles.breadcrumbs}>
           <li>
-            <a href="#">Wiki</a>
+            <Link href="/">
+              <a>Wiki</a>
+            </Link>
           </li>
           <li>
-            <a href="#">Travel</a>
+            <Link href="/">
+              <a>Travel</a>
+            </Link>
           </li>
           <li>
-            <a aria-current="page" href="#">
-              Colophon
-            </a>
+            <Link href="/">
+              <a aria-current="page">Colophon</a>
+            </Link>
           </li>
         </ol>
       </nav>
@@ -39,36 +44,44 @@ export default function Navigation({ topic }: NavigationProps) {
           <div className={styles.parent}>
             <dt className={styles.label}>Parent topic</dt>
             <dd>
-              <a href="#">A Topic</a>
+              <Link href="/">
+                <a>A Topic</a>
+              </Link>
             </dd>
           </div>
 
           <div className={styles.children}>
             <dt className={styles.label}>Child topics</dt>
             <dd>
-              <a href="#">Some Topic</a>
+              <Link href="/">
+                <a>Some Topic</a>
+              </Link>
             </dd>
             <dd>
-              <a href="#">Some Other Topic</a>
+              <Link href="/">
+                <a>Some Other Topic</a>
+              </Link>
             </dd>
           </div>
 
           <div className={styles.tags}>
             <dt className={styles.label}>Tagged with</dt>
             <dd>
-              <a href="#" rel="tag">
-                tag
-              </a>
+              <Link href="/">
+                <a rel="tag">tag</a>
+              </Link>
             </dd>
             <dd>
-              <a href="#" rel="tag">
-                tag2
-              </a>
+              <Link href="/">
+                <a rel="tag">tag2</a>
+              </Link>
             </dd>
             <dd>
-              <a href="#" rel="tag">
-                tag3
-              </a>
+              <Link href="/">
+                <a href="#" rel="tag">
+                  tag3
+                </a>
+              </Link>
             </dd>
           </div>
         </dl>
