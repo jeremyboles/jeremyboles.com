@@ -4,12 +4,7 @@ import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 
-import TopicBreadcrumbs from '../components/TopicBreadcrumbs'
-import TopicContent from '../components/TopicContent'
-import TopicHeader from '../components/TopicHeader'
-import TopicJournal from '../components/TopicJournal'
-import TopicLayout from '../components/TopicLayout'
-import TopicMap from '../components/TopicMap'
+import TopicDisplay from '../components/TopicDisplay'
 
 //
 // Main component
@@ -30,15 +25,7 @@ export default function TopicPage({ topic }: TopicPageProps) {
         <title>{topic.file.data.title} — Wiki | Jeremy Boles</title>
       </Head>
 
-      <article>
-        <TopicHeader topic={topic} />
-        <TopicLayout>
-          <TopicBreadcrumbs topic={topic} />
-          <TopicContent topic={topic} />
-          <TopicMap topic={topic} />
-          <TopicJournal topic={topic} />
-        </TopicLayout>
-      </article>
+      <TopicDisplay topic={topic} />
     </>
   )
 }

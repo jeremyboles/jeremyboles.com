@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header />
       <hr className="vx" />
       <main>
+        <a hidden id="main-content" />
         <Component {...pageProps} />
       </main>
       <hr className="vx" />

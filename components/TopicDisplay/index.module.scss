@@ -1,0 +1,33 @@
+@use '../../styles/utils';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  --gap: var(--space-5);
+  --header-gap: var(--space-8);
+
+  @extend %centered;
+
+  display: grid;
+  grid-column-gap: var(--gap);
+  grid-row-gap: var(--gap);
+  grid-template-areas:
+    'parent   parent      parent'
+    'title    title       title'
+    'tags     tags        tags'
+    'children children    children'
+    'map      breadcrumbs breadcrumbs'
+    'map      content     journal'
+    'writing  writing     writing';
+  grid-template-columns: var(--size-7) 1fr auto;
+}
+
+//
+// Divider
+// -------------------------------------------------------------------------------------------------
+
+.divider {
+  @extend %visually-hidden;
+}

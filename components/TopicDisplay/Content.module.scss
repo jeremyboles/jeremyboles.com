@@ -1,0 +1,113 @@
+@use '@centralstandard/typography';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container,
+.container > header {
+  display: contents;
+}
+
+//
+// Content
+// -------------------------------------------------------------------------------------------------
+
+.content {
+  @include typography.text-size(sm);
+
+  color: var(--warm-gray-600);
+  font-family: var(--sans-serif);
+  font-weight: 400;
+  grid-area: content;
+
+  a {
+    &:link {
+      color: var(--blue-600);
+      &:hover {
+        color: var(--blue-900);
+        text-decoration-color: var(--blue-500);
+      }
+    }
+
+    &:visited {
+      color: var(--purple-600);
+      &:hover {
+        color: var(--purple-900);
+        text-decoration-color: var(--purple-500);
+      }
+    }
+
+    &:active,
+    &:hover:active {
+      color: var(--red-600);
+      text-decoration-color: var(--red-600);
+    }
+  }
+
+  h2 {
+    @include typography.text-size(md);
+    color: var(--warm-gray-800);
+    font-family: var(--serif);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+    margin-top: var(--space-4);
+  }
+}
+
+//
+// Map
+// -------------------------------------------------------------------------------------------------
+
+.map {
+  grid-area: map;
+  margin-top: var(--header-gap);
+
+  figcaption {
+    color: var(--warm-gray-600);
+    font-family: var(--monospace);
+    font-size: var(--text-2-xs);
+    font-size: italic;
+    font-weight: 600;
+    line-height: var(--leading-0);
+    margin-top: var(--space-2);
+  }
+
+  svg {
+    background-color: var(--blue-100);
+    border-color: var(--warm-gray-300);
+    border-style: solid;
+    border-width: var(--space-px);
+    border-radius: 0.5em;
+    height: var(--size-6);
+    width: 100%;
+  }
+}
+
+//
+// Title
+// -------------------------------------------------------------------------------------------------
+
+.title {
+  @include typography.text-size(xl);
+
+  font-family: var(--sans-serif);
+  font-weight: 800;
+  grid-area: title;
+  justify-self: center;
+  order: 2;
+  overflow-wrap: break-word;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    @include typography.text-size(3-xl);
+  }
+
+  a {
+    color: var(--gray-900);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--yellow-900);
+  }
+}

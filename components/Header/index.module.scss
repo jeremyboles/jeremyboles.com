@@ -1,5 +1,7 @@
 @use '@centralstandard/typography';
 
+@use '../../styles/utils';
+
 //
 // Main wrapper
 // -------------------------------------------------------------------------------------------------
@@ -46,53 +48,6 @@
 }
 
 //
-// Wordmark
-// -------------------------------------------------------------------------------------------------
-
-.wordmark {
-  @include typography.text-size(xl);
-
-  @media (min-width: 352px) {
-    @include typography.text-size(2-xl);
-  }
-
-  color: inherit;
-  font-family: var(--argent);
-  font-weight: 800;
-  margin-bottom: var(--space-4);
-  margin-top: var(--space-3);
-  letter-spacing: var(--kerning-tight);
-  text-align: center;
-  text-transform: lowercase;
-
-  a {
-    color: var(--warm-gray-800);
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: var(--warm-gray-600);
-  }
-}
-
-//
-// Tag line
-// -------------------------------------------------------------------------------------------------
-
-.tagline {
-  @include typography.text-size(2-xs);
-
-  @media (min-width: 352px) {
-    @include typography.text-size(xs);
-  }
-
-  color: var(--warm-gray-600);
-  font-family: var(--sans-serif);
-  font-weight: 500;
-  text-align: center;
-}
-
-//
 // Primary navigation
 // -------------------------------------------------------------------------------------------------
 
@@ -121,8 +76,67 @@
     margin-left: var(--space-3);
   }
 
+  p {
+    @extend %visually-hidden;
+  }
+
   ul {
     display: flex;
     list-style: none;
+  }
+}
+
+//
+// Shortcuts
+// -------------------------------------------------------------------------------------------------
+
+.shortcuts {
+  @extend %visually-hidden;
+}
+
+//
+// Tag line
+// -------------------------------------------------------------------------------------------------
+
+.tagline {
+  @include typography.text-size(2-xs);
+
+  @media (min-width: 352px) {
+    @include typography.text-size(xs);
+  }
+
+  color: var(--warm-gray-600);
+  font-family: var(--sans-serif);
+  font-weight: 500;
+  text-align: center;
+}
+
+//
+// Wordmark
+// -------------------------------------------------------------------------------------------------
+
+.wordmark {
+  @include typography.text-size(xl);
+
+  @media (min-width: 352px) {
+    @include typography.text-size(2-xl);
+  }
+
+  color: inherit;
+  font-family: var(--argent);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-3);
+  letter-spacing: var(--kerning-tight);
+  text-align: center;
+  text-transform: lowercase;
+
+  a {
+    color: var(--warm-gray-800);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--warm-gray-600);
   }
 }
