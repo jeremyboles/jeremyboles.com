@@ -1,0 +1,65 @@
+@use '../../styles/utils';
+
+//
+// Main wrapper
+// -------------------------------------------------------------------------------------------------
+
+.container {
+  background-color: var(--warm-gray-100);
+
+  & > div {
+    @extend %centered;
+
+    padding-bottom: var(--space-8);
+    padding-top: var(--space-8);
+
+    & > h3 {
+      @extend %visually-hidden;
+    }
+  }
+}
+
+//
+// List of topics
+// -------------------------------------------------------------------------------------------------
+
+.topics {
+  display: grid;
+  font-family: var(--monospace);
+  font-size: var(--text-2-xs);
+  font-weight: 800;
+  grid-column-gap: var(--space-5);
+  grid-row-gap: rhythm(--space-1);
+  grid-template-columns: repeat(4, 1fr);
+
+  a {
+    color: var(--warm-gray-700);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--yellow-600);
+    }
+  }
+
+  dd {
+    font-weight: 500;
+    line-height: calc(var(--leading-1) / 2);
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+
+  div {
+    align-content: start;
+    display: grid;
+    grid-column-gap: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  dt {
+    border-bottom: var(--warm-gray-300) solid var(--size-px);
+    color: var(--warm-gray-800);
+    font-weight: 800;
+    grid-column: 1 / span 2;
+    margin-bottom: var(--space-2);
+  }
+}

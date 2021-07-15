@@ -9,7 +9,7 @@
 .container {
   grid-area: journal;
 
-  h3 {
+  & > h3 {
     @extend %visually-hidden;
   }
 }

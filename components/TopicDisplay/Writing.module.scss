@@ -1,8 +1,13 @@
+@use '../../styles/utils';
+
 //
 // Main wrapper
 // -------------------------------------------------------------------------------------------------
 
 .container {
   grid-area: writing;
-  margin-bottom: var(--header-gap);
+
+  & > h3 {
+    @extend %visually-hidden;
+  }
 }

@@ -5,6 +5,7 @@ import styles from './index.module.scss'
 import Content from './Content'
 import Journal from './Journal'
 import Navigation from './Navigation'
+import Related from './Related'
 import Writing from './Writing'
 
 //
@@ -18,13 +19,16 @@ interface TopicDisplayProps {
 export default function TopicDisplay({ topic }: TopicDisplayProps) {
   return (
     <div className={styles.container}>
-      <Navigation topic={topic} />
-      <hr className={styles.divider} />
+      <div>
+        <Navigation topic={topic} />
+        <hr className={styles.divider} />
 
-      <Content topic={topic} />
+        <Content topic={topic} />
 
-      <Journal topic={topic} />
-      <Writing topic={topic} />
+        <Journal topic={topic} />
+        <Writing topic={topic} />
+      </div>
+      <Related topic={topic} />
     </div>
   )
 }

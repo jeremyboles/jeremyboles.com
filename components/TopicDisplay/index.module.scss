@@ -4,7 +4,7 @@
 // Main wrapper
 // -------------------------------------------------------------------------------------------------
 
-.container {
+.container > div {
   --gap: var(--space-5);
   --header-gap: var(--space-8);
 
@@ -22,6 +22,7 @@
     'map      content     journal'
     'writing  writing     writing';
   grid-template-columns: var(--size-12) 1fr var(--size-14);
+  margin-bottom: var(--header-gap);
 }
 
 //
