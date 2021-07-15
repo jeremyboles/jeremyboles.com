@@ -2,8 +2,10 @@
   "name": "jeremyboles.com",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
+    "prebuild": "npm update '@jeremyboles/*'",
+    "predev": "npm update '@jeremyboles/*'",
     "start": "next start"
   },
   "dependencies": {
