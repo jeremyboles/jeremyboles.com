@@ -16,6 +16,52 @@
 // -------------------------------------------------------------------------------------------------
 
 .content {
+  grid-area: content;
+}
+
+//
+// Map
+// -------------------------------------------------------------------------------------------------
+
+.map {
+  grid-area: map;
+  margin-top: var(--header-gap);
+
+  a {
+    color: var(--emerald-800);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--emerald-600);
+    }
+  }
+
+  figcaption {
+    color: var(--warm-gray-600);
+    font-family: var(--monospace);
+    font-size: var(--text-2-xs);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: var(--space-2);
+  }
+
+  svg {
+    background-color: var(--blue-100);
+    border-color: var(--warm-gray-200);
+    border-style: solid;
+    border-width: var(--space-px);
+    border-radius: 0.25em;
+    height: var(--size-7);
+    width: 100%;
+  }
+}
+
+//
+// Markdown
+// -------------------------------------------------------------------------------------------------
+
+.markdown {
   @include typography.text-size(sm);
 
   color: var(--warm-gray-600);
@@ -62,40 +108,40 @@
 }
 
 //
-// Map
+// Table of contents
 // -------------------------------------------------------------------------------------------------
 
-.map {
-  grid-area: map;
-  margin-top: var(--header-gap);
-
-  a {
-    color: var(--emerald-800);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--emerald-600);
-    }
+.toc {
+  h3 {
+    @extend %visually-hidden;
   }
 
-  figcaption {
-    color: var(--warm-gray-600);
+  ol {
+    @include typography.text-size(xs);
+    columns: 2;
+    font-family: var(--sans-serif);
+    font-weight: 700;
+    line-height: var(--leading-0);
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+    text-transform: capitalize;
+    margin-bottom: var(--space-4);
+  }
+
+  li::marker {
+    color: var(--warm-gray-400);
     font-family: var(--monospace);
     font-size: var(--text-2-xs);
-    font-style: italic;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-top: var(--space-2);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
   }
 
-  svg {
-    background-color: var(--blue-100);
-    border-color: var(--warm-gray-200);
-    border-style: solid;
-    border-width: var(--space-px);
-    border-radius: 0.25em;
-    height: var(--size-7);
-    width: 100%;
+  a {
+    color: var(--warm-gray-600);
+    text-decoration: none;
+    &:hover {
+      color: var(--warm-gray-900);
+    }
   }
 }
 

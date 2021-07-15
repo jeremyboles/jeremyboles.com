@@ -32,7 +32,11 @@ export default function Content({ topic }: ContentProps) {
         </h1>
       </header>
 
-      <Markdown topic={topic} />
+      <div className={styles.content}>
+        <TableofContents topic={topic} />
+        <Markdown topic={topic} />
+      </div>
+
       <Map topic={topic} />
     </article>
   )
@@ -70,7 +74,28 @@ interface MarkdownProps {
 }
 
 function Markdown({ topic }: MarkdownProps) {
-  return <div className={styles.content}>{unified().use(stringify, { createElement }).stringify(topic.hast)}</div>
+  return <div className={styles.markdown}>{unified().use(stringify, { createElement }).stringify(topic.hast)}</div>
+}
+
+interface TableOfContentsProps {
+  topic: TransformedTopic
+}
+
+function TableofContents({ topic }: TableOfContentsProps) {
+  if (!topic.file.data.tableOfContents) return null
+
+  return (
+    <nav aria-labelledby="topic-table-of-contents" className={styles.toc}>
+      <h3 id="topic-table-of-contents">Table of Contents</h3>
+      <ol>
+        {topic.file.data.tableOfContents.map(({ id, title }) => (
+          <li key={id}>
+            <a href={id}>{title}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
 }
 
 //
