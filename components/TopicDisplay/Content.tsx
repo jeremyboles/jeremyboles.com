@@ -1,11 +1,10 @@
-import { TransformedTopic } from '@jeremyboles/wiki'
+import { TopicLocation, TransformedTopic } from '@jeremyboles/wiki'
 import { parseISO } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React, { createElement } from 'react'
-import stringify from 'rehype-react'
 import STATES from 'states-us'
-import unified from 'unified'
 
 import styles from './Content.module.scss'
 
@@ -58,10 +57,15 @@ function Map({ topic }: MapProps) {
       <figure>
         <svg />
         <figcaption className={styles.info}>
-          Last updated on the {format(date, "do 'of' LLLL, yyyy")} from{' '}
-          <Link href={`/map/${topic.file.data.location.geohash}`}>
-            <a>{formatLocation(topic.file.data.location)}</a>
-          </Link>
+          Last updated on the {format(date, "do 'of' LLLL, yyyy")}
+          {topic.file.data.location && (
+            <>
+              from{' '}
+              <Link href={`/map/${topic.file.data.location.geohash}`}>
+                <a>{formatLocation(topic.file.data.location)}</a>
+              </Link>
+            </>
+          )}
           .
         </figcaption>
       </figure>
@@ -72,10 +76,14 @@ function Map({ topic }: MapProps) {
 interface MarkdownProps {
   topic: TransformedTopic
 }
+const Markdown = dynamic(async () => {
+  const { default: unified } = await import('unified')
+  const { default: stringify } = await import('rehype-react')
 
-function Markdown({ topic }: MarkdownProps) {
-  return <div className={styles.markdown}>{unified().use(stringify, { createElement }).stringify(topic.hast)}</div>
-}
+  return function Markdown({ topic }: MarkdownProps) {
+    return <div className={styles.markdown}>{unified().use(stringify, { createElement }).stringify(topic.hast)}</div>
+  }
+})
 
 interface TableOfContentsProps {
   topic: TransformedTopic
@@ -102,7 +110,7 @@ function TableofContents({ topic }: TableOfContentsProps) {
 // Private functions
 // -------------------------------------------------------------------------------------------------
 
-function formatLocation(location) {
+function formatLocation(location: TopicLocation) {
   if (location.country === 'United States') {
     const state = STATES.find((s) => s.abbreviation === location.region)
     return `${location.locality}, ${state?.name || location.region}, ${location.country}`
