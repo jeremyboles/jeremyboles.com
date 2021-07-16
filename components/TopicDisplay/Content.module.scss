@@ -102,6 +102,14 @@
     margin-top: var(--space-4);
   }
 
+  hr {
+    background-color: var(--warm-gray-300);
+    display: block;
+    height: var(--size-px);
+    margin: var(--space-6) auto;
+    width: var(--size-6);
+  }
+
   p + p {
     margin-top: var(--space-4);
   }

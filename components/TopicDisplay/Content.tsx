@@ -60,6 +60,7 @@ function Map({ topic }: MapProps) {
           Last updated on the {format(date, "do 'of' LLLL, yyyy")}
           {topic.file.data.location && (
             <>
+              {' '}
               from{' '}
               <Link href={`/map/${topic.file.data.location.geohash}`}>
                 <a>{formatLocation(topic.file.data.location)}</a>
