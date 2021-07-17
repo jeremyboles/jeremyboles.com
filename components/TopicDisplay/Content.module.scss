@@ -110,6 +110,12 @@
     width: var(--size-6);
   }
 
+  ol,
+  ul {
+    margin-left: var(--space-6);
+    margin-top: var(--space-4);
+  }
+
   p + p {
     margin-top: var(--space-4);
   }
