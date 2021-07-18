@@ -77,6 +77,7 @@ function Map({ topic }: MapProps) {
 interface MarkdownProps {
   topic: TransformedTopic
 }
+
 const Markdown = dynamic(async () => {
   const { default: unified } = await import('unified')
   const { default: stringify } = await import('rehype-react')

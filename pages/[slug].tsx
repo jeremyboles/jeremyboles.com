@@ -1,4 +1,4 @@
-import { all, get, FileSlug, TransformedTopic } from '@jeremyboles/wiki'
+import { all, children, get, parent, FileSlug, TransformedTopic } from '@jeremyboles/wiki'
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
@@ -15,10 +15,12 @@ interface TopicPageParams extends ParsedUrlQuery {
 }
 
 interface TopicPageProps {
+  children: TransformedTopic[]
+  parent: TransformedTopic | null
   topic: TransformedTopic
 }
 
-export default function TopicPage({ topic }: TopicPageProps) {
+export default function TopicPage({ children, parent, topic }: TopicPageProps) {
   return (
     <>
       <Head>
@@ -26,7 +28,7 @@ export default function TopicPage({ topic }: TopicPageProps) {
         <link rel="canonical" href={`/${topic.file.data.slug}`} />
       </Head>
 
-      <TopicDisplay topic={topic} />
+      <TopicDisplay children={children} parent={parent} topic={topic} />
     </>
   )
 }
@@ -38,16 +40,18 @@ export default function TopicPage({ topic }: TopicPageProps) {
 type Context = GetStaticPropsContext<TopicPageParams>
 
 export async function getStaticProps(context: Context): Promise<GetStaticPropsResult<TopicPageProps>> {
+  const { slug } = context.params
   return {
     props: {
-      topic: await get(context.params.slug),
+      children: await children(slug),
+      parent: await parent(slug),
+      topic: await get(slug),
     },
   }
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const slugs = Object.keys(await all())
-
   return {
     fallback: false,
     paths: slugs.map((slug) => ({ params: { slug } })),

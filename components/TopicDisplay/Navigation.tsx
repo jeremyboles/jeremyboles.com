@@ -1,4 +1,5 @@
-import { TransformedTopic } from '@jeremyboles/wiki'
+import { children as getChildren, parent as getParent, TransformedTopic } from '@jeremyboles/wiki'
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -9,10 +10,12 @@ import styles from './Navigation.module.scss'
 // -------------------------------------------------------------------------------------------------
 
 interface NavigationProps {
+  children: TransformedTopic[]
+  parent: TransformedTopic | null
   topic: TransformedTopic
 }
 
-export default function Navigation({ topic }: NavigationProps) {
+export default function Navigation({ children, parent, topic }: NavigationProps) {
   return (
     <aside aria-label="Wiki navigation" className={styles.container}>
       <nav>
@@ -20,7 +23,7 @@ export default function Navigation({ topic }: NavigationProps) {
 
         <ol className={styles.breadcrumbs}>
           <li>
-            <Link href="/">
+            <Link href="/topics">
               <a>Wiki</a>
             </Link>
           </li>
@@ -30,8 +33,8 @@ export default function Navigation({ topic }: NavigationProps) {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              <a aria-current="page">Colophon</a>
+            <Link href={`/${topic.file.data.slug}`}>
+              <a aria-current="page">{topic.file.data.title}</a>
             </Link>
           </li>
         </ol>
@@ -41,28 +44,8 @@ export default function Navigation({ topic }: NavigationProps) {
         <p className={styles.label}>Topic navigation:</p>
 
         <dl className={styles.related}>
-          <div className={styles.parent}>
-            <dt className={styles.label}>Parent topic</dt>
-            <dd>
-              <Link href="/">
-                <a>A Topic</a>
-              </Link>
-            </dd>
-          </div>
-
-          <div className={styles.children}>
-            <dt className={styles.label}>Child topics</dt>
-            <dd>
-              <Link href="/">
-                <a>Some Topic</a>
-              </Link>
-            </dd>
-            <dd>
-              <Link href="/">
-                <a>Some Other Topic</a>
-              </Link>
-            </dd>
-          </div>
+          <Parent topic={parent} />
+          <Children topics={children} />
 
           <div className={styles.tags}>
             <dt className={styles.label}>Tagged with</dt>
@@ -87,5 +70,49 @@ export default function Navigation({ topic }: NavigationProps) {
         </dl>
       </nav>
     </aside>
+  )
+}
+
+//
+// Private components
+// -------------------------------------------------------------------------------------------------
+
+interface ChildrenProps {
+  topics: TransformedTopic[]
+}
+
+function Children({ topics }: ChildrenProps) {
+  if (topics.length === 0) return null
+
+  return (
+    <div className={styles.children}>
+      <dt className={styles.label}>Child topics</dt>
+      {topics.map((topic) => (
+        <dd>
+          <Link href={`/${topic.file.data.slug}`}>
+            <a>{topic.file.data.title}</a>
+          </Link>
+        </dd>
+      ))}
+    </div>
+  )
+}
+
+interface ParentProps {
+  topic: TransformedTopic | null
+}
+
+function Parent({ topic }: ParentProps) {
+  if (!topic) return null
+
+  return (
+    <div className={styles.parent}>
+      <dt className={styles.label}>Parent topic</dt>
+      <dd>
+        <Link href={`/${topic.file.data.slug}`}>
+          <a>{topic.file.data.title}</a>
+        </Link>
+      </dd>
+    </div>
   )
 }
