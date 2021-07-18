@@ -15,12 +15,13 @@ interface TopicPageParams extends ParsedUrlQuery {
 }
 
 interface TopicPageProps {
+  breadcrumbs: TransformedTopic[]
   children: TransformedTopic[]
   parent: TransformedTopic | null
   topic: TransformedTopic
 }
 
-export default function TopicPage({ children, parent, topic }: TopicPageProps) {
+export default function TopicPage({ breadcrumbs, children, parent, topic }: TopicPageProps) {
   return (
     <>
       <Head>
@@ -28,13 +29,13 @@ export default function TopicPage({ children, parent, topic }: TopicPageProps) {
         <link rel="canonical" href={`/${topic.file.data.slug}`} />
       </Head>
 
-      <TopicDisplay children={children} parent={parent} topic={topic} />
+      <TopicDisplay breadcrumbs={breadcrumbs} children={children} parent={parent} topic={topic} />
     </>
   )
 }
 
 //
-// Data fetching
+// Data fetching functions
 // -------------------------------------------------------------------------------------------------
 
 type Context = GetStaticPropsContext<TopicPageParams>
@@ -43,6 +44,7 @@ export async function getStaticProps(context: Context): Promise<GetStaticPropsRe
   const { slug } = context.params
   return {
     props: {
+      breadcrumbs: await breadcrumbs(slug),
       children: await children(slug),
       parent: await parent(slug),
       topic: await get(slug),
@@ -56,4 +58,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     fallback: false,
     paths: slugs.map((slug) => ({ params: { slug } })),
   }
+}
+
+//
+// Private functions
+// -------------------------------------------------------------------------------------------------
+
+async function breadcrumbs(slug: FileSlug) {
+  const topics: TransformedTopic[] = []
+  let topic = await parent(slug)
+  while (topic) {
+    topics.push(topic)
+    topic = await parent(topic.file.data.slug)
+  }
+  return topics.reverse()
 }

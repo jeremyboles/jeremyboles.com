@@ -13,16 +13,17 @@ import Writing from './Writing'
 // -------------------------------------------------------------------------------------------------
 
 interface TopicDisplayProps {
+  breadcrumbs: TransformedTopic[]
   children: TransformedTopic[]
   parent: TransformedTopic | null
   topic: TransformedTopic
 }
 
-export default function TopicDisplay({ children, parent, topic }: TopicDisplayProps) {
+export default function TopicDisplay({ breadcrumbs, children, parent, topic }: TopicDisplayProps) {
   return (
     <div className={styles.container}>
       <div>
-        <Navigation children={children} parent={parent} topic={topic} />
+        <Navigation breadcrumbs={breadcrumbs} children={children} parent={parent} topic={topic} />
         <hr className={styles.divider} />
 
         <Content topic={topic} />

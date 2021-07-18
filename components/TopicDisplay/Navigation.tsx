@@ -10,35 +10,16 @@ import styles from './Navigation.module.scss'
 // -------------------------------------------------------------------------------------------------
 
 interface NavigationProps {
+  breadcrumbs: TransformedTopic[]
   children: TransformedTopic[]
   parent: TransformedTopic | null
   topic: TransformedTopic
 }
 
-export default function Navigation({ children, parent, topic }: NavigationProps) {
+export default function Navigation({ breadcrumbs, children, parent, topic }: NavigationProps) {
   return (
     <aside aria-label="Wiki navigation" className={styles.container}>
-      <nav>
-        <p className={styles.label}>Breadcrumb navigation:</p>
-
-        <ol className={styles.breadcrumbs}>
-          <li>
-            <Link href="/topics">
-              <a>Wiki</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <a>Travel</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={`/${topic.file.data.slug}`}>
-              <a aria-current="page">{topic.file.data.title}</a>
-            </Link>
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumbs topic={topic} topics={breadcrumbs} />
 
       <nav>
         <p className={styles.label}>Topic navigation:</p>
@@ -77,6 +58,39 @@ export default function Navigation({ children, parent, topic }: NavigationProps)
 // Private components
 // -------------------------------------------------------------------------------------------------
 
+interface BreadcrumbsProps {
+  topic: TransformedTopic
+  topics: TransformedTopic[]
+}
+
+function Breadcrumbs({ topic, topics }: BreadcrumbsProps) {
+  return (
+    <nav>
+      <p className={styles.label}>Breadcrumb navigation:</p>
+
+      <ol className={styles.breadcrumbs}>
+        <li>
+          <Link href="/topics">
+            <a>Wiki</a>
+          </Link>
+        </li>
+        {topics.map((topic) => (
+          <li key={topic.file.data.id}>
+            <Link href={`/${topic.file.data.slug}`}>
+              <a>{topic.file.data.title}</a>
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link href={`/${topic.file.data.slug}`}>
+            <a aria-current="page">{topic.file.data.title}</a>
+          </Link>
+        </li>
+      </ol>
+    </nav>
+  )
+}
+
 interface ChildrenProps {
   topics: TransformedTopic[]
 }
@@ -88,7 +102,7 @@ function Children({ topics }: ChildrenProps) {
     <div className={styles.children}>
       <dt className={styles.label}>Child topics</dt>
       {topics.map((topic) => (
-        <dd>
+        <dd key={topic.file.data.id}>
           <Link href={`/${topic.file.data.slug}`}>
             <a>{topic.file.data.title}</a>
           </Link>
