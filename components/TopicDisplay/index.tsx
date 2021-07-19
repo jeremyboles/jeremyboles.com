@@ -23,11 +23,11 @@ export default function TopicDisplay({ breadcrumbs, children, parent, topic }: T
   return (
     <div className={styles.container}>
       <div>
-        <Navigation breadcrumbs={breadcrumbs} children={children} parent={parent} topic={topic} />
-        <hr className={styles.divider} />
-
         <Content topic={topic} />
 
+        <hr className={styles.divider} />
+
+        <Navigation breadcrumbs={breadcrumbs} children={children} parent={parent} topic={topic} />
         <Journal topic={topic} />
         <Writing topic={topic} />
       </div>

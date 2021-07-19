@@ -14,7 +14,6 @@ interface JournalProps {
 export default function Journal({ topic }: JournalProps) {
   return (
     <>
-      <hr className="hide" />
       <aside className={styles.container}>
         <h3>Journal Entries Related to “Colophon”</h3>
 
