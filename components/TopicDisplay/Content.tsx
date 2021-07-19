@@ -6,6 +6,8 @@ import Link from 'next/link'
 import React, { createElement } from 'react'
 import STATES from 'states-us'
 
+import Map from '../Map'
+
 import styles from './Content.module.scss'
 
 //
@@ -36,7 +38,7 @@ export default function Content({ topic }: ContentProps) {
         <Markdown topic={topic} />
       </div>
 
-      <Map topic={topic} />
+      <UpdateInfo topic={topic} />
     </article>
   )
 }
@@ -44,35 +46,6 @@ export default function Content({ topic }: ContentProps) {
 //
 // Private components
 // -------------------------------------------------------------------------------------------------
-
-interface MapProps {
-  topic: TransformedTopic
-}
-
-function Map({ topic }: MapProps) {
-  const date = utcToZonedTime(parseISO(topic.file.data.updatedAt), topic.file.data.location.timeZone)
-
-  return (
-    <footer className={styles.map}>
-      <figure>
-        <svg />
-        <figcaption className={styles.info}>
-          Last updated on the {format(date, "do 'of' LLLL, yyyy")}
-          {topic.file.data.location && (
-            <>
-              {' '}
-              from{' '}
-              <Link href={`/map/${topic.file.data.location.geohash}`}>
-                <a>{formatLocation(topic.file.data.location)}</a>
-              </Link>
-            </>
-          )}
-          .
-        </figcaption>
-      </figure>
-    </footer>
-  )
-}
 
 interface MarkdownProps {
   topic: TransformedTopic
@@ -105,6 +78,35 @@ function TableofContents({ topic }: TableOfContentsProps) {
         ))}
       </ol>
     </nav>
+  )
+}
+
+interface UpdateInfoProps {
+  topic: TransformedTopic
+}
+
+function UpdateInfo({ topic }: UpdateInfoProps) {
+  const date = utcToZonedTime(parseISO(topic.file.data.updatedAt), topic.file.data.location.timeZone)
+
+  return (
+    <footer className={styles.update}>
+      <figure>
+        <Map points={[topic.file.data.location?.coords]} />
+        <figcaption className={styles.info}>
+          Last updated on the {format(date, "do 'of' LLLL, yyyy")}
+          {topic.file.data.location && (
+            <>
+              {' '}
+              from{' '}
+              <Link href={`/map/${topic.file.data.location.geohash}`}>
+                <a>{formatLocation(topic.file.data.location)}</a>
+              </Link>
+            </>
+          )}
+          .
+        </figcaption>
+      </figure>
+    </footer>
   )
 }
 

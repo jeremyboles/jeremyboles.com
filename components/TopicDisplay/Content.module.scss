@@ -20,11 +20,11 @@
 }
 
 //
-// Map
+// Update info
 // -------------------------------------------------------------------------------------------------
 
-.map {
-  grid-area: map;
+.update {
+  grid-area: update;
   margin-top: var(--header-gap);
 
   a {
@@ -47,13 +47,22 @@
   }
 
   svg {
-    background-color: var(--blue-100);
+    background-color: var(--light-blue-100);
     border-color: var(--warm-gray-200);
     border-style: solid;
     border-width: var(--space-px);
     border-radius: 0.25em;
     height: var(--size-7);
+    padding: var(--space-2);
     width: 100%;
+
+    :global(.map path) {
+      fill: var(--emerald-400);
+    }
+
+    :global(.points circle) {
+      fill: var(--red-500);
+    }
   }
 }
 
