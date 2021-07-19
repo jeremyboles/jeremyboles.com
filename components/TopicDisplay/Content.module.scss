@@ -52,13 +52,10 @@
     border-style: solid;
     border-width: var(--space-px);
     border-radius: 0.25em;
+    color: var(--emerald-500);
     height: var(--size-7);
     padding: var(--space-2);
     width: 100%;
-
-    :global(.map path) {
-      fill: var(--emerald-400);
-    }
 
     :global(.points circle) {
       fill: var(--red-500);
