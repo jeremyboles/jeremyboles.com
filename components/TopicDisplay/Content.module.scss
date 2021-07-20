@@ -53,8 +53,7 @@
     border-width: var(--space-px);
     border-radius: 0.25em;
     color: var(--emerald-500);
-    height: var(--size-7);
-    padding: var(--space-2);
+    height: auto;
     width: 100%;
 
     :global(.points circle) {

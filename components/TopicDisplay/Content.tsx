@@ -91,7 +91,7 @@ function UpdateInfo({ topic }: UpdateInfoProps) {
   return (
     <footer className={styles.update}>
       <figure>
-        <Map points={[topic.file.data.location?.coords]} />
+        <Map height="175" points={[topic.file.data.location?.coords]} width="334" />
         <figcaption className={styles.info}>
           Last updated on the {format(date, "do 'of' LLLL, yyyy")}
           {topic.file.data.location && (
