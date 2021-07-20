@@ -1,9 +1,7 @@
-import { geoCircle, geoNaturalEarth1, geoPath } from 'd3-geo'
+import { geoNaturalEarth1, geoPath } from 'd3-geo'
 import React, { useMemo } from 'react'
 import { feature } from 'topojson-client'
 import world from 'world-atlas/land-110m.json'
-
-import map from './map.svg'
 
 //
 // Settings and configuration
