@@ -47,7 +47,7 @@ export default function Top() {
 function Biography() {
   return (
     <article className={styles.biography}>
-      <h3>About Me, in Fifteen Seconds</h3>
+      <h3>About Me, in Fifteen Seconds</h3>
       <picture>
         <source
           sizes="200px"

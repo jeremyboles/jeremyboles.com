@@ -6,7 +6,7 @@
 // Settings
 // -------------------------------------------------------------------------------------------------
 
-$break-point: 764px;
+$break-point: 860px;
 
 //
 // Main wrapper
@@ -41,6 +41,7 @@ $break-point: 764px;
   font-weight: 500;
   grid-column: 1 / span 1;
   grid-row: 3 / span 1;
+  line-height: 1.5;
   text-align: center;
 
   @media (min-width: $break-point) {
@@ -123,6 +124,8 @@ $break-point: 764px;
   }
 
   li {
+    margin-left: var(--space-3);
+
     &:first-of-type {
       a::before {
         background-color: currentColor;
@@ -140,11 +143,12 @@ $break-point: 764px;
       }
     }
 
-    &:not(:last-of-type)::after {
-      color: var(--warm-gray-200);
-      content: '|';
-      margin-left: var(--space-3);
-      margin-right: var(--space-3);
+    @media (min-width: $break-point) {
+      &:not(:last-of-type)::after {
+        color: var(--warm-gray-200);
+        content: '|';
+        margin-left: var(--space-3);
+      }
     }
   }
 
@@ -167,6 +171,7 @@ $break-point: 764px;
   font-weight: 700;
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
+  justify-self: center;
   letter-spacing: var(--kerning-tight);
   text-transform: lowercase;
 
@@ -174,6 +179,7 @@ $break-point: 764px;
     align-self: center;
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
+    justify-self: start;
   }
 
   a {
