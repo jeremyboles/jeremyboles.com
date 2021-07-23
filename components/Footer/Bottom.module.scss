@@ -127,6 +127,8 @@ $break-point: 860px;
     margin-left: var(--space-3);
 
     &:first-of-type {
+      margin-left: 0;
+
       a::before {
         background-color: currentColor;
         content: ' ';
