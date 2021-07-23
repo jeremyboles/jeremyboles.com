@@ -10,19 +10,52 @@
 
   @extend %centered;
 
+  align-content: start;
   display: grid;
   grid-column-gap: var(--gap);
   grid-row-gap: var(--gap);
   grid-template-areas:
-    'parent   parent      parent'
-    'title    title       title'
-    'tags     tags        tags'
-    'children children    children'
-    'update   breadcrumbs breadcrumbs'
-    'update   content     journal'
-    'writing  writing     writing';
-  grid-template-columns: var(--size-12) 1fr var(--size-14);
+    'parent'
+    'title'
+    'tags'
+    'children'
+    'breadcrumbs'
+    'content'
+    'update'
+    'journal'
+    'writing';
   margin-bottom: var(--header-gap);
+
+  @media (min-width: 664px) {
+    grid-template-areas:
+      'parent   parent'
+      'title    title'
+      'tags     tags'
+      'children children'
+      'breadcrumbs breadcrumbs'
+      'content update'
+      'content journal'
+      'writing writing';
+    grid-template-columns:
+      minmax(var(--size-16), 1fr)
+      minmax(var(--size-4), var(--size-11));
+    grid-template-rows: repeat(6, auto) 1fr auto;
+  }
+
+  @media (min-width: 912px) {
+    grid-template-areas:
+      'parent   parent      parent'
+      'title    title       title'
+      'tags     tags        tags'
+      'children children    children'
+      'update   breadcrumbs breadcrumbs'
+      'update   content     journal'
+      'writing  writing     writing';
+    grid-template-columns:
+      minmax(var(--size-4), var(--size-12))
+      minmax(var(--size-16), 1fr)
+      minmax(var(--size-6), var(--size-14));
+  }
 }
 
 //

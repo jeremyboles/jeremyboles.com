@@ -115,7 +115,7 @@ function UpdateInfo({ topic }: UpdateInfoProps) {
 // -------------------------------------------------------------------------------------------------
 
 function formatLocation(location: TopicLocation) {
-  if (location.country === 'United States') {
+  if (location.country === 'United States') {
     const state = STATES.find((s) => s.abbreviation === location.region)
     return `${location.locality}, ${state?.name || location.region}, ${location.country}`
   }

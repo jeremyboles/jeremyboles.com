@@ -25,9 +25,12 @@
   font-family: var(--monospace);
   font-weight: 800;
   list-style: none;
-  margin-top: var(--header-gap);
   padding-left: var(--space-2);
   padding-right: var(--space-2);
+
+  @media (min-width: 664px) {
+    margin-top: var(--header-gap);
+  }
 
   a {
     color: var(--warm-gray-600);

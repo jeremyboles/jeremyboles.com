@@ -25,7 +25,10 @@
 
 .update {
   grid-area: update;
-  margin-top: var(--header-gap);
+
+  @media (min-width: 784px) {
+    margin-top: var(--header-gap);
+  }
 
   a {
     color: var(--emerald-800);
